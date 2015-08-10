@@ -23,42 +23,32 @@
             <!--<img class="ui mini image" src="/images/logo.png">-->
         </div>
 
-        <a class="item" ng-repeat="site in sites" ng-click="show($index)">
+        <a class="item" ng-repeat="site in sites track by $index" ng-click="show($index)">
             {{site.name}}
         </a>
     </div>
 
 
     <div class="ui text container">
+        <div class="ui loader {{load_active}} "></div>
+
         <div ng-repeat="result in results">
-            {{result.title}}
-            {{result.description}}
+            <h1>{{result.title}} </h1>
+            <div ng-bind-html="result.description | sanitize"></div>
+            <hr/>
         </div>
     </div>
-
-    <!--<div id="sideBar">-->
-        <!--<div id="header">Menu</div>-->
-        <!--<div id="list">-->
-            <!--<ul id="listOfSite">       -->
-            <!--</ul>  -->
-            <!--<input type="button"  id="addURL" value="+" />-->
-        <!--</div>-->
-    <!--</div>-->
-
-    <!--<div id="contain">-->
-        <!--&lt;!&ndash;<div id="load"> <img  src="Load.gif"/> </div>&ndash;&gt;-->
-        <!--<div id="header">Title</div>-->
-    <!--</div>-->
 
 
     <div class="ui small modal">
         <i class="close icon"></i>
         <div class="header">
-            Add Feed
+            <h1> Add Feed </h1>
         </div>
 
         <div class="content">
-            <p> Type your favorite site here : <br/> feeds2.feedburner.com/Line25 </p>
+            <p> Type your favorite site here : </p>
+            <p> example : feeds2.feedburner.com/Line25 </p>
 
             <div class="ui huge labeled input">
                 <div class="ui label">
