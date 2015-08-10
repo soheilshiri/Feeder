@@ -22,19 +22,17 @@
             <button class="green fluid ui button" ng-click="add_feed()" > Add Feed </button>
             <!--<img class="ui mini image" src="/images/logo.png">-->
         </div>
-        <a class="item">Features</a>
-        <a class="item">Testimonials</a>
-        <a class="item">Sign-in</a>
 
-        <a class="item" ng-repeat="site in sites">
-            {{site}}
+        <a class="item" ng-repeat="site in sites" ng-click="show($index)">
+            {{site.name}}
         </a>
     </div>
 
 
     <div class="ui text container">
-        <div class="ui raised segment">
-            <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>
+        <div ng-repeat="result in results">
+            {{result.title}}
+            {{result.description}}
         </div>
     </div>
 
@@ -60,7 +58,7 @@
         </div>
 
         <div class="content">
-            <p> Type your favorite site here : </p>
+            <p> Type your favorite site here : <br/> feeds2.feedburner.com/Line25 </p>
 
             <div class="ui huge labeled input">
                 <div class="ui label">
