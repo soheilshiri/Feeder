@@ -16,6 +16,7 @@ var app = angular.module('feeder', [])
         $scope.URL = "";
         $scope.load_active = "";
 
+        // Load from LocalStorage
         if (JSON.parse(localStorage.getItem('DATA')) == null)
             $scope.sites = [];
         else
@@ -23,8 +24,7 @@ var app = angular.module('feeder', [])
 
         $scope.results;
 
-
-
+        // Show Feed
         $scope.show = function(index) {
             $scope.load_active = "active";
             $scope.results = "";
@@ -44,6 +44,8 @@ var app = angular.module('feeder', [])
                 });
         }
 
+
+        // For Modal of Add New Item
         $scope.add_feed = function() {
             $('.small.modal')
                 .modal('show')
@@ -70,11 +72,11 @@ var app = angular.module('feeder', [])
         }
 
 
+        // Add a New Item
         $scope.add_url = function(URL) {
 
             $scope.url_title = $scope.YQL_title('http://' + URL);
             $scope.url_rss = $scope.YQL_rss('http://' + URL);
-
 
             $http({
                 url : $scope.url_title,
@@ -83,20 +85,14 @@ var app = angular.module('feeder', [])
                 .success(function(data){
                     $scope.name_results = data['query']['results'];
                     $scope.sites.push({ url: URL, rss:  $scope.url_rss, name: $scope.name_results["feed"]["title"]});
+                    // Save to LocalStorage
                     localStorage.setItem('DATA', JSON.stringify($scope.sites));
                 })
                 .error(function(error) {
                     console.error(error);
             });
 
-
-            //console.log('http://' + URL);
-            //console.log($scope.newURL);
-
         }
 
-
     }]);
-
-
 
