@@ -1,2 +1,2 @@
 # Feeder
-Simple RSS Feed Reader Web App
+Simple RSS Feed Reader - with **Angular** + **Semantic**
