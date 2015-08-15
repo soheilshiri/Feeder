@@ -26,6 +26,8 @@
         <a class="item" ng-repeat="site in sites track by $index" ng-click="show($index)">
             {{site.name}}
         </a>
+        <div class="ui active centered inline loader" ng-show="site_loader"></div>
+
     </div>
 
 

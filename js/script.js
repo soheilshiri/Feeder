@@ -14,6 +14,7 @@ var app = angular.module('feeder', [])
 
         $scope.url_nums = 0;
         $scope.URL = "";
+        $scope.site_loader = false;
         $scope.load_active = "";
 
         // Load from LocalStorage
@@ -74,6 +75,7 @@ var app = angular.module('feeder', [])
 
         // Add a New Item
         $scope.add_url = function(URL) {
+            $scope.site_loader = true;
 
             $scope.url_title = $scope.YQL_title('http://' + URL);
             $scope.url_rss = $scope.YQL_rss('http://' + URL);
@@ -83,6 +85,7 @@ var app = angular.module('feeder', [])
                 method : 'GET'
             })
                 .success(function(data){
+                    $scope.site_loader = false;
                     $scope.name_results = data['query']['results'];
                     $scope.sites.push({ url: URL, rss:  $scope.url_rss, name: $scope.name_results["feed"]["title"]});
                     // Save to LocalStorage
